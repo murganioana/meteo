@@ -37,7 +37,7 @@ export class HomePage {
     this.daysInThisMonth = new Array();
     this.daysInLastMonth = new Array();
     this.daysInNextMonth = new Array();
-    this.currentMonth = this.monthNames[this.date.getMonth()];
+    this.currentMonth = this.monthNames[this.date.getMonth()].toLocaleUpperCase();
     this.currentYear = this.date.getFullYear();
     if(this.date.getMonth() === new Date().getMonth()) {
       this.currentDate = new Date().getDate();
@@ -67,6 +67,14 @@ export class HomePage {
         this.daysInNextMonth.push(l);
       }
     }
+    console.log("lastDayThisMonth: " + lastDayThisMonth);
+
+    if (this.daysInNextMonth.length > 6){
+      this.daysInNextMonth.length  = 7 - lastDayThisMonth - 1;
+
+    }
+
+    console.log(this.daysInNextMonth);
   }
 
   goToLastMonth() {
